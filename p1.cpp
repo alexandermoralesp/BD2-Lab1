@@ -1,6 +1,3 @@
-//
-// Created by Grove on 25/03/2022.
-//
 #include<fstream>
 #include<iostream>
 #include<string>
@@ -11,19 +8,19 @@ using namespace std;
 struct Alumno{
     Alumno(){}
     Alumno(string _codigo, string _nombre, string _apellidos , string _carrera){
-        for(int i = 0; i<5; i++){
+        for(int i = 0; i<sizeof(codigo); i++){
             if(i < _codigo.size()) codigo[i] = _codigo[i];
             else codigo[i] = ' ';
         }
-        for(int i = 0; i<11; i++){
+        for(int i = 0; i<sizeof(nombre); i++){
             if(i < _nombre.size()) nombre[i] = _nombre[i];
             else nombre[i] = ' ';
         }
-        for(int i = 0; i<20; i++){
+        for(int i = 0; i<sizeof(apellidos); i++){
             if(i < _apellidos.size()) apellidos[i] = _apellidos[i];
             else apellidos[i] = ' ';
         }
-        for(int i = 0; i<15; i++){
+        for(int i = 0; i<sizeof(carrera); i++){
             if(i < _carrera.size()) carrera[i] = _carrera[i];
             else carrera[i] = ' ';
         }
