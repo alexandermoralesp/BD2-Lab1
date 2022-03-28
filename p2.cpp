@@ -45,7 +45,6 @@ class FixedRecord{
         Alumno atemp;
         while(archivo>>atemp){
             result.push_back(atemp);
-            cout<<atemp;
         }
         archivo.close();
         return result;
@@ -63,12 +62,11 @@ class FixedRecord{
         return result;
     }
     bool delete_reg(int pos){
-        
+        return bool();
     }
     private:
     string path;
 };
 
 int main(){
-    
 }
