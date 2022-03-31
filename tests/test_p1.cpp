@@ -27,6 +27,11 @@ void test_load() {
     }
     std::cout <<"\n";
 }
+
+void test_add() {
+    FixedRecord fixedRecord("input/datos1.txt");
+    Alumn alumn;
+}
 int main() {
     // readingFile();
     try

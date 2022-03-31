@@ -1,36 +1,30 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <exception>
-/* CONSIDERAR ARCHIVO BINARIO */
-using namespace std;
+#include "./include/p2.h"
 
-struct Alumno {
-  char codigo[5];
-  char nombre[11];
-  char apellidos[20];
-  char carrera[15];
-
-  int ciclo;
-  float mensualidad;
-};
-
-class FixedRecord {
-private:
-  string path;
-public:
-  FixedRecord(string path);
-  vector<Alumno> load();
-  void add(Alumno record);
-  Alumno readRecord(int pos);
-  bool deleteRecord(int pos); // Usar Freelist
-};
-
-FixedRecord::FixedRecord(string path) {
-  if (path.size() <= 0) throw invalid_argument("The path value is empty or is not valid directory.");
-  this->path = path; 
+FixedRecord::FixedRecord(std::string path) {
+    if (path.size() <= 0)
+        throw std::invalid_argument(
+            "The path value is empty or is not valid directory.");
+    path_ = path;
+}
+std::vector<Alumn> FixedRecord::load() {
+    std::ifstream file(path_, std::ios::in);
+    std::vector<Alumn> output;
+    Alumn record;
+    if (file.is_open()) {
+        while (!file.eof()) {
+            record = Alumn();
+            file.read((char*)&record, sizeof(Alumn));
+            output.push_back(record);
+        }
+        file.close();
+    }
+    return output;
 }
 
 int main() {
-  return(0);
+  FixedRecord fixedrecord("input/datos1.dat");
+  std::vector<Alumn> alumns = fixedrecord.load();
+  for(auto &alumn:alumns) {
+    alumn.showData();
+  }
 }
